@@ -1,88 +1,87 @@
-# Server Chat Application
+# Calculator C++
 
 ## Overview
-`server_chat` is a simple server-client chat application implemented in C. It demonstrates fundamental networking concepts using socket programming and supports real-time message exchange between a server and a client.
+`calculator-cpp` is a simple command-line calculator implemented in C++. It demonstrates fundamental programming concepts such as object-oriented design, modular programming, and arithmetic operation handling.
 
 ## Features
-- **Server Mode**: Accepts a client connection and facilitates real-time communication.
-- **Client Mode**: Connects to a server and enables message exchange.
-- **Polling**: Uses the `poll()` function to handle asynchronous I/O for efficient communication.
-- **Error Handling**: Implements robust error handling for socket-related operations.
+- **Basic Arithmetic Operations**: Supports addition, subtraction, multiplication, and division.
+- **Modular Design**: Separated logic into distinct header and source files for maintainability.
+- **Command-line Interface**: Simple CLI for user interaction.
 
 ## Technologies
-- **Programming Language**: C
-- **Networking Concepts**: TCP/IP socket programming
-- **Libraries**: `sys/socket.h`, `netinet/in.h`, `arpa/inet.h`, `poll.h`
+- **Programming Language**: C++
+- **Build System**: CMake for cross-platform builds
+- **Dependency Management**: Conan for handling external libraries (if any)
 
 ## Getting Started
 
 ### Prerequisites
-- **Environment**: Linux-based operating system.
-- **Compiler**: `gcc` or a similar C compiler.
+- **Environment**: Cross-platform (Windows, macOS, Linux)
+- **Compiler**: Any C++ compiler supporting C++11 or later
+- **Tools**: CMake, Conan (for dependency management)
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/AkanMNdem/server_chat.git
+   git clone https://github.com/AkanMNdem/calculator-cpp.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd server_chat
+   cd calculator-cpp
    ```
 
-3. Compile the code:
+3. Install dependencies using Conan (if needed):
    ```bash
-   gcc schat.c -o schat
+   conan install .
+   ```
+
+4. Build the project using CMake:
+   ```bash
+   mkdir build
+   cd build
+   cmake ..
+   cmake --build .
    ```
 
 ## Usage
 
-### Running the Server
-1. Start the server:
+### Running the Calculator
+1. Start the calculator:
    ```bash
-   ./schat
+   ./calculator
    ```
-2. The server will listen on a randomized port and display the port number in the terminal.
-
-### Running the Client
-1. Start the client and connect to the server using its IP address and port:
-   ```bash
-   ./schat [server_ip] [port]
-   ```
-2. Example:
-   ```bash
-   ./schat 127.0.0.1 8080
-   ```
-3. Begin chatting! Type messages to send them to the server or client.
+2. Follow on-screen prompts to perform calculations.
 
 ## Code Structure
-- **`schat.c`**: Contains the main server and client logic.
-  - Handles socket creation, binding, listening, and communication.
-  - Uses `poll()` for managing simultaneous I/O operations.
-  - **Error Handling**: A helper function (`handle_error`) provides meaningful error messages for debugging.
+- **`src/`**: Contains the main source code files.
+  - **`main.cpp`**: Entry point of the application.
+  - **`calculator.cpp`**: Core logic for performing calculations.
+
+- **`include/`**: Header files for function declarations.
+  - **`calculator.h`**: Declares the calculator class and functions.
+
+- **`CMakeLists.txt`**: Build configuration file for CMake.
+- **`conanfile.txt`**: Dependency management configuration using Conan.
 
 ## Functionality
 
-### Server Mode
-1. Creates a TCP socket and binds it to a randomized port.
-2. Listens for incoming client connections.
-3. Accepts a connection and starts polling for messages.
-4. Receives messages from the client and sends responses back.
+### Basic Arithmetic
+1. Supports integer and floating-point calculations.
+2. Provides results for addition, subtraction, multiplication, and division.
 
-### Client Mode
-1. Connects to the server using the specified IP and port.
-2. Supports sending and receiving messages via polling.
-3. Displays server responses on the console.
+### Error Handling
+1. Detects and handles division by zero.
+2. Provides meaningful error messages for invalid inputs.
 
 ## Future Enhancements
-- **Multi-Client Support**: Extend the server to handle multiple clients simultaneously.
-- **Encryption**: Add secure communication using encryption libraries like OpenSSL.
-- **Configuration File**: Allow server settings to be customizable via a configuration file.
-- **Logging**: Implement detailed logging for monitoring and debugging.
+- **Advanced Operations**: Implement support for trigonometric functions and exponentiation.
+- **GUI Version**: Add a graphical user interface using a framework like Qt.
+- **History Feature**: Maintain a log of previous calculations for reference.
 
 ## License
 This project is licensed under the MIT License.
 
 ## Acknowledgments
-This project is a foundational exercise in networking and is ideal for learning socket programming in C.
+This project serves as a fundamental exercise in C++ programming, ideal for beginners looking to understand object-oriented design and modular programming.
+
